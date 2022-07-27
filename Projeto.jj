@@ -1,0 +1,9 @@
+/**
+ * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
+ */options{  static = true;}PARSER_BEGIN(Projeto)package projeto;
+
+public class Projeto{  public static void main(String args []) throws ParseException  {    Projeto parser = new Projeto(System.in);    while (true)    {      System.out.print("Enter an expression like \"ca, ba, bla, ye, sla, sle...\" :");      try      {        switch (Projeto.one_line())        {          case 0 :           System.out.println("Sentence accepted.");          break;             default :           break;        }      }      catch (Exception e)      {        System.out.println("Syntax error.");        System.out.println(e.getMessage());        Projeto.ReInit(System.in);      }      catch (Error e)      {        System.out.println("Lexical error.");        System.out.println(e.getMessage());        break;      }    }  }}PARSER_END(Projeto)SKIP :{  " "| "\r"| "\t"| "\n"}TOKEN : /* OPERATORS */{  < PLUS : "+" >| < MINUS : "-" >| < MULTIPLY : "*" >| < DIVIDE : "/" >}TOKEN :{  < SYLLABLE: (< CONSOANT >)+(< VOWEL >) >| < CONSOANT: ([ "b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","x","y","w","z",
+				 "B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","Y","W","Z"]) >
+| < VOWEL: [ "a","e","i","o","u","A","E","I","O","U" ] >}int one_line() :{}{  < SYLLABLE >
+  {
+    return 0;  }}
