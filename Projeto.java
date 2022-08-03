@@ -7,7 +7,7 @@ public class Projeto implements ProjetoConstants {
     Projeto parser = new Projeto(System.in);
     while (true)
     {
-      System.out.print("Enter an expression like \u005c"ca, ba, bla, ye, sla, sle...\u005c" :");
+      System.out.print("Enter a sentence followed by \u005c";\u005c":");
       try
       {
         switch (Projeto.one_line())
@@ -36,9 +36,132 @@ public class Projeto implements ProjetoConstants {
   }
 
   static final public int one_line() throws ParseException {
-    jj_consume_token(SYLLABLE);
-    {if (true) return 0;}
+    initial();
+          {if (true) return 0;}
     throw new Error("Missing return statement in function");
+  }
+
+  static final public void initial() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case SYLLABLE:
+      jj_consume_token(SYLLABLE);
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case PLUS:
+        concat();
+        break;
+      default:
+        jj_la1[0] = jj_gen;
+        ;
+      }
+      jj_consume_token(16);
+      break;
+    case WORD:
+      jj_consume_token(WORD);
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case DIVIDE:
+        split();
+        break;
+      default:
+        jj_la1[1] = jj_gen;
+        ;
+      }
+      jj_consume_token(16);
+      break;
+    case TYPE:
+      wordOrSyllable();
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case MINUS:
+        remove();
+        break;
+      case MULTIPLY:
+        fill();
+        break;
+      default:
+        jj_la1[2] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      jj_consume_token(16);
+      break;
+    default:
+      jj_la1[3] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+  }
+
+  static final public void concat() throws ParseException {
+    label_1:
+    while (true) {
+      jj_consume_token(PLUS);
+      wordOrSyllable();
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case PLUS:
+        ;
+        break;
+      default:
+        jj_la1[4] = jj_gen;
+        break label_1;
+      }
+    }
+  }
+
+  static final public void remove() throws ParseException {
+    jj_consume_token(MINUS);
+    letter();
+  }
+
+  static final public void fill() throws ParseException {
+    jj_consume_token(MULTIPLY);
+    letter();
+  }
+
+  static final public void split() throws ParseException {
+    jj_consume_token(DIVIDE);
+  }
+
+  static final public void wordOrSyllable() throws ParseException {
+    jj_consume_token(TYPE);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case WORD:
+      jj_consume_token(WORD);
+      break;
+    case SYLLABLE:
+      jj_consume_token(SYLLABLE);
+      break;
+    default:
+      jj_la1[5] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+  }
+
+  static final public void letter() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case CONSOANT:
+      jj_consume_token(CONSOANT);
+      hasDigit();
+      break;
+    case VOWEL:
+      jj_consume_token(VOWEL);
+      hasDigit();
+      break;
+    default:
+      jj_la1[6] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+  }
+
+  static final public void hasDigit() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case DIGIT:
+      jj_consume_token(DIGIT);
+      break;
+    default:
+      jj_la1[7] = jj_gen;
+      ;
+    }
   }
 
   static private boolean jj_initialized_once = false;
@@ -51,13 +174,13 @@ public class Projeto implements ProjetoConstants {
   static public Token jj_nt;
   static private int jj_ntk;
   static private int jj_gen;
-  static final private int[] jj_la1 = new int[0];
+  static final private int[] jj_la1 = new int[8];
   static private int[] jj_la1_0;
   static {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {};
+      jj_la1_0 = new int[] {0x20,0x100,0xc0,0x1c00,0x20,0x1800,0x6000,0x8000,};
    }
 
   /** Constructor with InputStream. */
@@ -78,7 +201,7 @@ public class Projeto implements ProjetoConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 8; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -92,7 +215,7 @@ public class Projeto implements ProjetoConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 8; i++) jj_la1[i] = -1;
   }
 
   /** Constructor. */
@@ -109,7 +232,7 @@ public class Projeto implements ProjetoConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 8; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -119,7 +242,7 @@ public class Projeto implements ProjetoConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 8; i++) jj_la1[i] = -1;
   }
 
   /** Constructor with generated Token Manager. */
@@ -135,7 +258,7 @@ public class Projeto implements ProjetoConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 8; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -144,7 +267,7 @@ public class Projeto implements ProjetoConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 8; i++) jj_la1[i] = -1;
   }
 
   static private Token jj_consume_token(int kind) throws ParseException {
@@ -195,12 +318,12 @@ public class Projeto implements ProjetoConstants {
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[12];
+    boolean[] la1tokens = new boolean[17];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 0; i++) {
+    for (int i = 0; i < 8; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
@@ -209,7 +332,7 @@ public class Projeto implements ProjetoConstants {
         }
       }
     }
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < 17; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

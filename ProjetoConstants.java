@@ -19,11 +19,19 @@ public interface ProjetoConstants {
   /** RegularExpression Id. */
   int DIVIDE = 8;
   /** RegularExpression Id. */
-  int SYLLABLE = 9;
+  int ARROW = 9;
   /** RegularExpression Id. */
-  int CONSOANT = 10;
+  int TYPE = 10;
   /** RegularExpression Id. */
-  int VOWEL = 11;
+  int WORD = 11;
+  /** RegularExpression Id. */
+  int SYLLABLE = 12;
+  /** RegularExpression Id. */
+  int CONSOANT = 13;
+  /** RegularExpression Id. */
+  int VOWEL = 14;
+  /** RegularExpression Id. */
+  int DIGIT = 15;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -39,9 +47,14 @@ public interface ProjetoConstants {
     "\"-\"",
     "\"*\"",
     "\"/\"",
+    "\"->\"",
+    "<TYPE>",
+    "<WORD>",
     "<SYLLABLE>",
     "<CONSOANT>",
     "<VOWEL>",
+    "<DIGIT>",
+    "\";\"",
   };
 
 }
